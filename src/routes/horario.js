@@ -6,14 +6,31 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('banco.json')
 const db = low(adapter)
 
+
 router.post('/horario', (req, res, next) => {
+  // db.defaults({ horario: [], count: 0 }).write()
+  id = db.get('count')
+  data=req.body['data'].split("-");
+  var data=data[1]+"/"+data[0]+"/"+data[2];
+
   db.get('horario')
-    .push({id: 1, semanal: false, hora_inicial: '17:00', hora_final: '17:30'})
+    .push(
+      {
+        id: id,
+        data: new Date(data).getTime(),
+        semanal: req.body['semanal'],
+        diario: req.body['diario'],
+        hora_inicial: req.body['hr_inicio'],
+        hora_final: req.body['hr_fim']
+      }
+    )
+    .write()
+
+    db.set('count', id+1)
     .write()
 
   res.status(201).send({
-    response: 'Horário cadastrado.',
-    version: '1.0.0'
+    response: 'Horário cadastrado com sucesso.'
   });
 
 });
