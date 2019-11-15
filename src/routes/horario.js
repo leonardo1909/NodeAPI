@@ -47,7 +47,6 @@ router.get('/horario', (req, res, next) => {
   data_fim_stamp = new Date(data_fim).getTime();
 
 
-
   var response = []
   var date = new Date(data_inicio);
   var date_fim = new Date(data_fim);
