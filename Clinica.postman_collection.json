@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "548744ab-e34c-4073-a0c7-bee70bca0f6f",
+		"name": "Clinica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar horario fixo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"data\": \"17-09-2020\",\n\t\"hr_inicio\": \"10:00\",\n\t\"hr_fim\": \"10:30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/horario/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"horario",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apagar horário",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/horario/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"horario",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar horario diario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"diario\": true,\n\t\"hr_inicio\": \"10:00\",\n\t\"hr_fim\": \"10:30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/horario/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"horario",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar horario semanal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"semanal\":true,\n\t\"dia\": 1,\n\t\"hr_inicio\": \"10:00\",\n\t\"hr_fim\": \"10:30\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/horario/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"horario",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar horario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/horario/?data_inicio=17-09-2020&data_fim=24-09-2020",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"horario",
+						""
+					],
+					"query": [
+						{
+							"key": "data_inicio",
+							"value": "17-09-2020"
+						},
+						{
+							"key": "data_fim",
+							"value": "24-09-2020"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

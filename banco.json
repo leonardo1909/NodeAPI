@@ -1,0 +1,13 @@
+{
+  "horario": [
+    {
+      "id": 3,
+      "timestamp": null,
+      "semanal": true,
+      "dia": 1,
+      "hora_inicial": "10:00",
+      "hora_final": "10:30"
+    }
+  ],
+  "count": 3
+}
