@@ -2,28 +2,24 @@
   "horario": [
     {
       "id": 1,
-      "data": 1600484400000,
+      "timestamp": 1600138800000,
+      "data": "15-09-2020",
       "semanal": false,
-      "diario": false,
+      "diario": true,
+      "dia": 1,
       "hora_inicial": "10:00",
       "hora_final": "10:30"
     },
     {
       "id": 2,
-      "data": 1600570800000,
+      "timestamp": 1600311600000,
+      "data": "17-09-2020",
       "semanal": false,
       "diario": false,
-      "hora_inicial": "10:00",
-      "hora_final": "10:30"
-    },
-    {
-      "id": 3,
-      "data": 1600398000000,
-      "semanal": false,
-      "diario": false,
+      "dia": 1,
       "hora_inicial": "10:00",
       "hora_final": "10:30"
     }
   ],
-  "count": 3
+  "count": 2
 }

@@ -17,20 +17,79 @@ router.post('/horario', (req, res, next) => {
     .push(
       {
         id: id,
-        data: new Date(data).getTime(),
+        timestamp: new Date(data).getTime(),
+        data: req.body['data'],
         semanal: req.body['semanal'],
         diario: req.body['diario'],
+        dia: req.body['dia'],
         hora_inicial: req.body['hr_inicio'],
         hora_final: req.body['hr_fim']
       }
     )
     .write()
 
-    db.set('count', id+1)
+  db.set('count', id+1)
     .write()
 
   res.status(201).send({
     response: 'Horário cadastrado com sucesso.'
+  });
+
+});
+
+router.get('/horario', (req, res, next) => {
+  data_inicio = req.query['data_inicio'].split("-");
+  data_inicio = data_inicio[1]+"/"+data_inicio[0]+"/"+data_inicio[2];
+  data_inicio_stamp = new Date(data_inicio).getTime();
+
+  data_fim = req.query['data_fim'].split("-");
+  data_fim = data_fim[1]+"/"+data_fim[0]+"/"+data_fim[2];
+  data_fim_stamp = new Date(data_fim).getTime();
+
+
+
+  var response = []
+  var date = new Date(data_inicio);
+  var date_fim = new Date(data_fim);
+  date_fim.setDate(date_fim.getDate() + 1);
+  data_fim_stamp = date_fim.getTime()
+
+  while (data_inicio_stamp !== data_fim_stamp){
+    intervals = [];
+    var horarios = db.get('horario').filter((
+      (obj =>
+        (obj.diario == true) ||
+        (obj.semanal == true && obj.dia == date.getDay()) ||
+        (obj.timestamp === data_inicio_stamp)
+      )
+    )).sortBy("hora_inicial")
+    .values()
+
+    var next = horarios.next()
+    while (!next.done){
+        intervals.push(
+          {
+            "start": next.value['hora_inicial'],
+            "end": next.value['hora_final']
+          }
+        )
+        next = horarios.next()
+    }
+
+    response.push(
+      {
+        "day": date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear(),
+        "intervals": intervals
+      }
+    )
+
+    date.setDate(date.getDate() + 1);
+    data_inicio_stamp = date.getTime()
+  }
+
+
+  res.status(200).send({
+    response
   });
 
 });
