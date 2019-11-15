@@ -1,25 +1,13 @@
 {
   "horario": [
     {
-      "id": 1,
-      "timestamp": 1600138800000,
-      "data": "15-09-2020",
-      "semanal": false,
-      "diario": true,
-      "dia": 1,
-      "hora_inicial": "10:00",
-      "hora_final": "10:30"
-    },
-    {
-      "id": 2,
-      "timestamp": 1600311600000,
-      "data": "17-09-2020",
-      "semanal": false,
-      "diario": false,
+      "id": 3,
+      "timestamp": null,
+      "semanal": true,
       "dia": 1,
       "hora_inicial": "10:00",
       "hora_final": "10:30"
     }
   ],
-  "count": 2
+  "count": 3
 }
